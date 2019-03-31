@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-f() {
- echo 'a'
- echo 'b'
-}
-
-r=$(f)
-
-a = r
+usage="dsfsd\ndsfsd
+"
+echo -e ${usage}

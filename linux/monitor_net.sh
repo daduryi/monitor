@@ -1,9 +1,14 @@
 #!/bin/bash
 
 usage="usage: $0 [eno1|bond0|...]"
+
+# *** config ***
+
 INTERVAL=10
 INFLUXDB_HOST='127.0.0.1'
 INFLUXDB_PORT=8086
+
+# *** varify ***
 
 ETH=$1
 
@@ -12,12 +17,14 @@ if [[ -z $ETH ]]; then
 	exit 1
 fi
 
-# 验证网卡是否up
+# 验证网卡device是否up
 tmp=`ifconfig $ETH`
 if [ $? -ne 0 ]; then
     echo "ERROR [$ETH]: Device not found"
     exit 2
 fi
+
+# *** monitor ***
 
 rxrt=`ifconfig $ETH | grep RX | grep TX`
 rx_before=`echo $rxrt | awk '{print $2}'|cut -c7-`

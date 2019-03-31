@@ -34,9 +34,9 @@ while : ; do
 
         rx_result=$[(${rx_after}-${rx_before})/128/$INTERVAL]
         tx_result=$[(${tx_after}-${tx_before})/128/$INTERVAL]
-        echo "${time}+${INTERVAL} [${ETH}] NowInSpeed: ${rx_result}kbps NowOutSpeed: ${tx_result}kbps"
+        echo "${time}+${INTERVAL} [${ETH}] InSpeed: ${rx_result}kbps OutSpeed: ${tx_result}kbps"
 
-        #params="Now_In_Speed=$rx_result,Now_OUt_Speed=$tx_result"
+        #params="InSpeed=$rx_result,OutSpeed=$tx_result"
         #curl -i -XPOST "http://${INFLUXDB_HOST}:${INFLUXDB_PORT}/write?db=monitordb" --data-binary "net,host=${HOST},eth=${ETH} ${params}"
 
         rx_before=$rx_after

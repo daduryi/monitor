@@ -24,7 +24,6 @@ LOAD_LOG="${ROOT}/load.log"
 GPU_LOG="${ROOT}/gpu.log"
 RENDERER_LOG="${ROOT}/renderer.log"
 
-
 # 通知电邮列表
 NOTICE_EMAIL='admin@admin.com'
 
@@ -32,7 +31,6 @@ NOTICE_EMAIL='admin@admin.com'
 CPU_REMARK='/tmp/servermonitor_cpu.remark'
 MEM_REMARK='/tmp/servermonitor_mem.remark'
 LOAD_REMARK='/tmp/servermonitor_loadaverage.remark'
-RENDERER_REMARK='/tmp/servermonitor_renderernums.remark'
 GPU_REMARK='/tmp/servermonitor_gpu.remark'
 
 # 发通知电邮间隔时间
@@ -45,8 +43,6 @@ LIMIT_LOAD=35
 LIMIT_GPU=80
 
 FDISK='/dev/sda5'
-
-# *** config end ***
 
 
 # *** function start ***
@@ -180,11 +176,11 @@ function GetRemark() {
 }
 
 function CustomSendMail() {
-    # 集群可以调用邮件公共服务
+    # 可以调用集群公共邮件服务
     sendmail "Subject: ${HOST} $1 $(date +%Y-%m-%d' '%H:%M:%S)"
 }
 
-# *** function end ***
+# *** run start ***
 
 cpuinfo=$(GetCpu)
 meminfo=$(GetMem)

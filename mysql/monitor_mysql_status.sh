@@ -27,9 +27,9 @@ echo Exiting because $RUNFILE does not exist.
 
 # 133
 mysqladmin ext -i1 | awk '
+  /Threads_running/{printf "%5d %5d %5d\n", q, tc, $4}'
   /Queries/{q=$4-qp;qp=$4}
   /Threads_connexted/{tc=$4}
-  /Threads_running/{printf "%5d %5d %5d\n", q, tc, $4}'
 
 
 # 134
